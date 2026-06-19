@@ -1,0 +1,67 @@
+# VoiceFlow-CN Configuration
+
+# Audio Processing Parameters
+audio:
+  sample_rate: 16000
+  noise_reduction_db: 4.0
+  deesser_strength: 2.0
+  target_lufs: -16.0
+  compressor_ratio: 1.8
+  crossfade_ms: 25
+
+# DSP Chain
+dsp:
+  highpass:
+    frequency: 70
+    order: 12
+  noise_reduction:
+    max_db: 4.0
+    mode: "adaptive"
+  deesser:
+    frequency_min: 5000
+    frequency_max: 8000
+    trigger_db: 6.0
+    reduction_db: 2.0
+  clarity_enhancer:
+    frequency_min: 2000
+    frequency_max: 4500
+    gain_db: 1.0
+  compressor:
+    ratio: 1.8
+    attack_ms: 15
+    release_ms: 120
+  limiter:
+    true_peak: -1.0
+    max_reduction_db: 2.0
+  loudness:
+    target_lufs: -16.0
+    tolerance: 1.0
+
+# Content Analysis
+analysis:
+  pause_detection:
+    threshold_s: 0.8
+    target_s: 0.65
+  repetition_detection:
+    window_s: 15
+    similarity_threshold: 0.95
+  filler_words:
+    - "呃"
+    - "额"
+    - "嗯"
+    - "啊"
+    - "那个"
+    - "这个"
+    - "然后"
+    - "就是"
+    - "那么"
+
+# Volume Consistency
+volume_consistency:
+  max_diff_db: 3.0
+  smoothing: "gradual"
+
+# Quality Check
+quality_check:
+  enabled: true
+  fallback_on_failure: true
